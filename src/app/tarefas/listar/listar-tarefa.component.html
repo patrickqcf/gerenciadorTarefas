@@ -13,13 +13,13 @@
     </tr>
     <tr *ngFor="let tarefa of tarefas">
       <!-- adiciona um class html com o nome sucess do seu css dinâmicamente à partir do booleano concluida -->
-      <td [class.sucess]="!tarefa.concluida">
+      <td [class.success]="tarefa.concluida" [tarefaConcluida]="tarefa.concluida">
         <!-- {{}} adiciona na tela o conteudo da variavel selecionada -->
         {{tarefa.nome}}
       </td>
       <td style="width: 70px" class="text-center">
         <!-- adiciona a tag value do html com o valor da variável do angular -->
-        <input type="checkbox" [value]="tarefa.id" [checked]="tarefa.concluida">
+        <input type="checkbox" [value]="tarefa.id" [checked]="tarefa.concluida" (click)="alterarStatus(tarefa)">
       </td>
       <td class="text-center" style="width: 200px">
         <a [routerLink]="['/tarefas/editar/', tarefa.id]" title="Editar" alt="Editar" class="btn btn-xs btn-info">
